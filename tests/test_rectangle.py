@@ -7,39 +7,53 @@ import unittest
 from shape.rectangle import Rectangle
 
 class TestRectangle(unittest.TestCase):
-    """Tests for Rectangle class."""
+    """Beginner-friendly tests for Rectangle class."""
 
     def setUp(self):
-        """Setup a valid rectangle before each test."""
-        self.rect = Rectangle("blue", 5, 3)
+        """Create some rectangle objects for testing."""
+        self.r1 = Rectangle("blue", 5, 3)
+        self.r2 = Rectangle("red", 10, 2)
 
-    def test_str_method(self):
-        """Test __str__ output."""
-        expected = (
-            "The shape color is blue.\n"
-            "This rectangle has four sides with the lengths of 5, 3, 5 and 3 centimeters."
-        )
-        self.assertEqual(str(self.rect), expected)
+    # ---------- __str__ method ----------
+    def test_str(self):
+        expected1 = "The shape color is blue.\nThis rectangle has four sides with the lengths of 5, 3, 5 and 3 centimeters."
+        expected2 = "The shape color is red.\nThis rectangle has four sides with the lengths of 10, 2, 10 and 2 centimeters."
+        self.assertEqual(str(self.r1), expected1)
+        self.assertEqual(str(self.r2), expected2)
 
+    # ---------- Area calculation ----------
     def test_area(self):
-        """Test area calculation."""
-        self.assertEqual(self.rect.calculate_area(), 15)
+        self.assertEqual(self.r1.calculate_area(), 15)
+        self.assertEqual(self.r2.calculate_area(), 20)
 
+    # ---------- Perimeter calculation ----------
     def test_perimeter(self):
-        """Test perimeter calculation."""
-        self.assertEqual(self.rect.calculate_perimeter(), 16)
+        self.assertEqual(self.r1.calculate_perimeter(), 16)
+        self.assertEqual(self.r2.calculate_perimeter(), 24)
 
+    # ---------- Invalid length ----------
     def test_invalid_length(self):
-        """Test that non-numeric length raises ValueError."""
-        with self.assertRaises(ValueError) as e:
-            Rectangle("red", "five", 3)
-        self.assertEqual(str(e.exception), "Length must be numeric.")
+        with self.assertRaises(ValueError) as context:
+            Rectangle("green", "wrong", 4)
+        self.assertEqual(str(context.exception), "Length must be numeric.")
 
+    # ---------- Invalid width ----------
     def test_invalid_width(self):
-        """Test that non-numeric width raises ValueError."""
-        with self.assertRaises(ValueError) as e:
-            Rectangle("red", 5, "three")
-        self.assertEqual(str(e.exception), "Width must be numeric.")
+        with self.assertRaises(ValueError) as context:
+            Rectangle("green", 5, "wrong")
+        self.assertEqual(str(context.exception), "Width must be numeric.")
+
+    # ---------- Zero dimensions ----------
+    def test_zero_length_width(self):
+        r = Rectangle("black", 0, 0)
+        self.assertEqual(r.calculate_area(), 0)
+        self.assertEqual(r.calculate_perimeter(), 0)
+
+    # ---------- Large numbers ----------
+    def test_large_numbers(self):
+        r = Rectangle("yellow", 1000, 2000)
+        self.assertEqual(r.calculate_area(), 2_000_000)
+        self.assertEqual(r.calculate_perimeter(), 6000)
 
 if __name__ == "__main__":
     unittest.main()

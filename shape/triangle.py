@@ -1,3 +1,4 @@
+
 """This module defines the Triangle class."""
 
 from shape import Shape
@@ -51,4 +52,4 @@ class Triangle(Shape):
 
     def calculate_perimeter(self):
         """Return the perimeter of the triangle."""
-        return self._side_1 + self._side_2 + self._side_3
+        return self._side_1 + self._side_2 + self._side_3 

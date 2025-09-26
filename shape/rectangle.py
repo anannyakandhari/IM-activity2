@@ -33,7 +33,7 @@ class Rectangle(Shape):
         """Return a string description of the rectangle."""
         return (
             f"{super().__str__()}\n"
-            f"This rectangle has four sides with the lengths of "
+            f"This rectangle has four sides with the lengths of"
             f"{self._length}, {self._width}, {self._length} and {self._width} centimeters."
         )
 
