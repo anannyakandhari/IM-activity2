@@ -4,7 +4,9 @@ __author__ = "ACE Faculty"
 __version__ = "1.0.0"
 __credits__ = ""
 
-from shape import Triangle, Rectangle, Shape  # thanks to __init__.py we can import all at once
+from shape 
+import Triangle, Rectangle, Shape 
+# thanks to __init__.py we can import all at once
 
 def main():
     """Test the functionality of the methods encapsulated in this project."""
