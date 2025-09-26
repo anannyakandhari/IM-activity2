@@ -9,7 +9,7 @@ class Rectangle(Shape):
     """Represents a rectangle shape."""
 
     def __init__(self, color, length, width):
-        """Initialize a Rectangle.
+        """Initialize a Rectangle
 
         Args:
             color (str): Color of the rectangle.
